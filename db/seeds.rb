@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+100.times do |t|
+  post = Post.create(title: Faker::Lorem.word, body: Faker::Lorem.paragraphs(3).join(' '))
+  puts("Created Post - #{post.id}")
+  rand(10..50).times do |c|
+    comment = Comment.create(body: Faker::Lorem.paragraph, post: post)
+    puts("Created Comment - #{comment.id} for Post #{post.id}")
+  end
+end
